@@ -61,18 +61,15 @@ which makeblastdb
 2. FragGeneScan in https://github.com/gaberoo/FragGeneScan<br>
 3. diamond in https://github.com/bbuchfink/diamond<br>
 4. BLAST+ in https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/<br>
-5. rpsblast in https://gensoft.pasteur.fr/docs/blast/2.2.26/rpsblast.html<br>
 6. AcRanker-master in https://github.com/amina01/AcRanker<br>
 7. mafft in https://mafft.cbrc.jp/alignment/software/
 8. HMMER in http://hmmer.org/download.html<br>
 9. cd-hit in https://www.bioinformatics.org/cd-hit<br>
-10. cd-hit-est in https://www.bioinformatics.org/cd-hit<br>
 11. SeqKit in https://bioinf.shenwei.me/seqkit<br>
 12. DBSCAN-SWA in https://github.com/HIT-ImmunologyLab/DBSCAN-SWA<br>
 13. pilercr in https://www.drive5.com/pilercr/<br>
 14. CRISPRCasFinder in https://github.com/dcouvin/CRISPRCasFinder<br>
 15. Self-Targeting-Spacer-Searcher in https://github.com/kew222/Self-Targeting-Spacer-Searcher<br>
-16. antismash in https://antismash.secondarymetabolites.org/#!/start<br>
 17. PHIS in http://www.phis.inra.fr/<br>
 18. Phage_finder in http://phage-finder.sourceforge.net/<br>
 19. CRISPRLeader in https://github.com/BackofenLab/CRISPRleader<br>
@@ -89,33 +86,33 @@ which makeblastdb
 git clone https://github.com/HIT-ImmunologyLab/CRISPRimmunity.git
 ```
 
-- step2: add the [download_path]/bin to your environment.
+- step2: Download CRISPRimmunity database for standalone from CRISPRimmunity webserver and check MD5
+
+Due to the large size of the database file (~XXXG), we recommend using -c (continue) and -b (background) parameters of wget to avoid the data loss caused by network outages, and checking MD5 to verify the integrity of the downloaded files.
 
 ```shell
-export PATH=$PATH:/path/to/DBSCAN-SWA/software/blast+/bin:$PATH
-export PATH=$PATH:/path/to/DBSCAN-SWA/bin
-export PATH=$PATH:/path/to/DBSCAN-SWA/software/diamond
-export PATH=$PATH:/path/to/prokka/bin
+## md5 checksum: XXX
+### Download Database
+wget -c -b XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+### Check md5
+md5sum XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- step3: grant permission to run the softwares.
+- step3: Unzip the database file to specified subdirectory under CRISPRimmunity installation directory
 
 ```shell
-chmod u+x -R /path/to/DBSCAN-SWA/bin
-chmod u+x -R /path/to/DBSCAN-SWA/software
+### Unzip the database file
+tar -zxvf XXXXXXXXXXXXXXXXXXXXXXXXXX
+cp XXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- step4: test DBSCAN-SWA in command line
-
-```shell
-python <path>/dbscan-swa.py --h
-```
+When you organize the whole files well,the corresponding directory structure are displayed as shown below. 
 
 <p id="Usage"></p>
 
 ## Usage
 
-DBSCAN-SWA is an integrated tool for detection of prophages, providing a series of analysis including ORF prediction and genome annotation, phage-like gene clusters detection, attachments site identification and infecting phages annotation
+CRISPRimmunity is an integrated tool for Acr prediction, identification of novel class 2 CRISPR-Cas loci, and dissection of CRISPR-associated important molecular events.
 
 ### Command line options
 
