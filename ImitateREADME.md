@@ -118,48 +118,56 @@ CRISPRimmunity is an integrated tool for Acr prediction, identification of novel
 
 ```shell
 General:
---input <file name>        : Query phage file path: FASTA or GenBank file
+--input <file name>        : Genome file path: FASTA or GenBank file
 --output <folder name>     : Output folder in which results will be stored
---prefix <prefix>     : default: bac:
-
-Phage Clustering:
---evalue <x>               : maximal E-value of searching for homology virus proteins from viral UniProt TrEML database. default:1e-7
---min_protein_num <x>      : optional,the minimal number of proteins forming a phage cluster in DBSCAN, default:6
---protein_number <x>       : optional,the number of expanding proteins when finding prophage att sites, default:10
-
-Phage Annotation:
---add_annotation <options> : optional,default:PGPD,
-   1.PGPD: a phage genome and protein database,
-   2.phage_path:specified phage genome in FASTA or GenBank format to detect whether the phage infects the query bacteria
-   3.none:no phage annotation
---per <x>                  : Minimal % percentage of hit proteins on hit prophage region(default:30)
---idn <x>                  : Minimal % identity of hit region on hit prophage region by making blastn(default:70)
--cov <x>                   : Minimal % coverage of hit region on hit prophage region by making blastn(default:30)
+--mismatch <x>             : value of self-targeting mismatch, default:2
+--cov <x>                  : value of self-targeting coverage, default:1
+--range <x>                : array neighbour range, default:20000
+--neighbor <x>             : array neighbour number, default:10
+--anti_identity <x>        : array neighbour number, default:0.4
+--anti_coverage <x>        : array neighbour number, default:0.7
+--anti_up_num <x>          : array neighbour number, default:3
+--phage_mismatch <x>       : array neighbour number, default:2
+--phage_coverage <x>       : array neighbour number, default:0.7
+--prophage_thread_num <x>  : array neighbour number, default:3
+--anti_prot_size <x>       : array neighbour number, default:3
+--repeat_identity <x>      : short-blastn identity, default:0.9
+--repeat_coverage <x>      : short-blastn coverage, default:0.9
+--homo_identity <x>        : diamond blastp identity, default:0.3
+--homo_coverage <x>        : diamond blastp coverage, default:0.6
+--att_spacer_num <x>       : diamond blastp coverage, default:2
+--att_min_repeat_length <x>: diamond blastp coverage, default:18
+--att_max_repeat_length <x>: diamond blastp coverage, default:45
+--att_protein_size <x>     : diamond blastp coverage, default:500
+--att_neighbor_distance <x>: diamond blastp coverage, default:5
+--annotation <x>           : diamond blastp coverage
+--anti_flag <x>            : diamond blastp coverage
+--prog_dir <x>             : directory of program
 ```
 
-### Start DBSCAN-SWA
+### Start 
 
 The python script is also provided for expert users<br>
 
-1. predict prophages of query bacterium with default parameters:
+1. identification of novel class 2 effector protein:
 
 ```shell
-python <path>/dbscan-swa.py --input <bac_path> --output <outdir> --prefix <prefix>
+python <path>/predict_crispr_cas_self_targeting.py --input <genome file path> --output <outdir> --annotation 'effector' --prog_dir <program directory>
 ```
 
-2. predict prophages of query bacterium and no phage annotation:
+2. Acr prediction:
 
 ```shell
-python <path>/dbscan-swa.py --input <bac_path> --output <outdir> --prefix <prefix> --add_annotation none
+python <path>/predict_crispr_cas_self_targeting.py --input <genome file path> --output <outdir> --annotation 'anti,self-targeting,prophage' -- prog_dir <program directory>
 ```
 
-3. predict prophages of query bacterium and detect the bacterium-phage interaction between the query bacterium and query phage:
+3. annotation of important molecular events:
 
 ```shell
-python <path>/dbscan-swa.py --input <bac_path> --output <outdir> --prefix <prefix> --add_annotation <phage_path>
+python <path>/predict_crispr_cas_self_targeting.py --input <genome file path> --output <outdir> --annotation 'self-targeting,MGE-targeting,prophage,anti' -- prog_dir <program directory>
 ```
 
-Outputs
+### Outputs
 
 | File Name                                     | Description                                                  |
 | --------------------------------------------- | ------------------------------------------------------------ |
