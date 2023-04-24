@@ -191,9 +191,9 @@ python <path>/predict_crispr_cas_self_targeting.py --input <genome file path> --
 
 | File Name                                                    | Description                                                  | Module        |
 | :----------------------------------------------------------- | ------------------------------------------------------------ | ------------- |
-| crispr_cas_self-targeting_statis_result.txt                  | Overview of the result  of CRISPR-associated event, <br>including CRISPR array detection, Cas protein annotation, <br>repeat type annotation, self-targeting detection. | IME, ACR, EFF |
+| crispr_cas_self-targeting_statis_result.txt                  | Overview of the result  of CRISPR-associated event, including CRISPR array detection, Cas protein annotation, repeat type annotation, self-targeting detection. | IME, ACR, EFF |
 | anti_statis_result.txt                                       | Overview of the result of predicted Acrs.                    | IME, ACR      |
-| <prefix>.merge_spc_blastn_fasta_add_<br>cov_filter_mismatch_2_cov_1_hit_not_in_array | Detail of the result of sequence alignment between <br>spacer and self-genome. | IME, ACR, EFF |
+| <prefix>.merge_spc_blastn_fasta_add_<br>cov_filter_mismatch_2_cov_1_hit_not_in_array | Detail of the result of sequence alignment between spacer and self-genome. | IME, ACR, EFF |
 | merge_crispr_array.txt<prefix>\_merge.spc                    | Overview  of the result of CRISPR array detection.           | IME, ACR, EFF |
 | merge_crispr_array.txt                                       | Detail of the result of CRISPR array detection.              | IME, ACR, EFF |
 | <prefix>\_merge.csp                                          | Sequence of the spacers.                                     | IME, ACR, EFF |
@@ -207,7 +207,7 @@ python <path>/predict_crispr_cas_self_targeting.py --input <genome file path> --
 | interacting_phage/spacer_blastn_phage_filter.txt             | Overview  of the result of MGE-targeting detection.          | IME, ACR      |
 | anti/acr_candidate_info_integrated_three_methods.txt         | Overview of the predicted ant.                               | IME, ACR      |
 | novel_effector_protein/filter_repeat_homo_<br>protein_crispr_filter_result.txt | Overview of the identified novel class 2 effector proteins   | EFF           |
-| novel_effector_protein/effector_tree.png                     | Phylogenetic tree of novel class 2 effector candidates and<br> known class 2 effector proteins | EFF           |
+| novel_effector_protein/effector_tree.png                     | Phylogenetic tree of novel class 2 effector candidates and known class 2 effector proteins | EFF           |
 
 IME：important molecular events detection module
 ACR：Acr prediction module
